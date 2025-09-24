@@ -1,0 +1,8 @@
+{
+  "compilerOptions": {
+    "target": "es2015",
+    "noImplicitAny": false,
+    "lib": ["es6", "dom"],
+    "moduleResolution": "node"
+  }
+}
