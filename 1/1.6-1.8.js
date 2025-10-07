@@ -45,6 +45,7 @@ function square(x) {
 
 // Exercise 1.7
 console.log(sqrt(0.000003));
+console.log(sqrt_precision(0.000003));
 // console.log(sqrt(123456789101112)); // Maximum call stack size exceeded
 console.log(sqrt_precision(123456789101112)); // 11111111.065821053
 
@@ -53,11 +54,28 @@ function sqrt_precision(x) {
 }
 
 function sqrt_iter_precision(guess, x, prevGuess) {
-  return is_good_enough_precision(guess, x, prevGuess)
+  return is_good_enough_precision(guess, prevGuess)
     ? guess
     : sqrt_iter_precision(improve(guess, x), x, guess);
 }
 
-function is_good_enough_precision(guess, x, prevGuess) {
+function is_good_enough_precision(guess, prevGuess) {
   return abs(guess - prevGuess) / prevGuess < 0.0001;
 }
+
+// Exercise 1.8
+function improve_cube(guess, x) {
+  return (x / (guess * guess) + guess * 2) / 3;
+}
+
+function cube_iter(guess, x, prevGuess) {
+  return is_good_enough_precision(guess, prevGuess)
+    ? guess
+    : cube_iter(improve_cube(guess, x), x, guess);
+}
+
+function cbrt(x) {
+  return cube_iter(1, x, x);
+}
+
+console.log(cbrt(27));
