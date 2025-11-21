@@ -17,4 +17,5 @@ function make_from_mag_ang() {
       ? tail(z)
       : error(op, "unknown op - make_from_mag_ang");
   }
+  return dispatch;
 }
